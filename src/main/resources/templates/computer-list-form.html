@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>A számítógépek listázása</title>
+
+</head>
+<body>
+<h1>A számítógépek listája:</h1>
+<div th:each="computer : ${computerList}">
+    <div th:text="${computer.name}"></div>
+    <div th:text="${computer.number}"></div>
+    <div th:text="${computer.price}"></div>
+    <div th:hidden="${computer.id}"></div>
+    <div><a href="#" th:href="@{'/computer/delete/' + ${computer.id} }">Delete</a></div>
+</div>
+
+</body>
+</html>

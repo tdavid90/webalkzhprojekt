@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>A felviteli form</title>
+    <style type="text/css">
+        .formerror {
+            background-color: coral;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Felviteli számítógép adatai:</h1>
+<form action="#" th:action="@{/computer}" th:object="${computerModel}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table>
+        <tr>
+            <td>Név:</td>
+            <td><input type="text" th:field="*{name}" th:errorclass="formerror"/></td>
+            <td th:if="${#fields.hasErrors()}" style="color: red" th:each="err : ${#fields.errors('name')}" th:text="${err}"></td>
+        </tr>
+        <tr>
+            <td>Gyártószám:</td>
+            <td><input type="number" th:field="*{number}" th:errorclass="formerror"/></td>
+            <td th:if="${#fields.hasErrors()}" style="color: red" th:each="err : ${#fields.errors('number')}" th:text="${err}"></td>
+        </tr>
+        <tr>
+            <td>Ár:</td>
+            <td><input type="number" th:field="*{price}" th:errorclass="formerror"/></td>
+            <td th:if="${#fields.hasErrors()}" style="color: red" th:each="err : ${#fields.errors('price')}" th:text="${err}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Mehet</button></td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>
